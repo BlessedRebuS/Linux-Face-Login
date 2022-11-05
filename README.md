@@ -1,6 +1,21 @@
 # Facial-Recognition-PAM
 Progetto di Sistemi Digitali per Ingegneria Informatica Magistrale Unibo.
 
+## Testing
+Pull image dal registry
+
+`docker pull blessedrebus/debian-pam`
+
+Run docker image
+
+`sudo docker run -p 22:22 -it -d --name debian-test-PAM debian`
+ 
+ Provare a loggare con l'utente backdoor ed inserire qualunque password 
+ 
+ `ssh backdoor@localhost -p 1234`
+ 
+ Se l'accesso viene eseguito il modulo PAM è utilizzato correttamente
+
 ## Abstract
 Il progetto si basa su PAM (Pluggable Authentication Module), ovvero un sistema a moduli che è alla base dell’ autenticazione nei moderni sistemi Linux.
 PAM è unito al processamento delle immagini ottenute da un flusso di dati registrati da una webcam.
