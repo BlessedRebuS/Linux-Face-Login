@@ -33,8 +33,7 @@ def main(user):
             img_name = f'faces/{user}.jpg'
             # saves the image as a png file
             cv2.imwrite(img_name, frame)
-            print('screenshot taken')
-            # the number of images automaticallly increases by 1
+            #print('screenshot taken')
             break
 
     # release the camera
