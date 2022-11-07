@@ -19,7 +19,7 @@ PAM_EXTERN int pam_sm_authenticate( pam_handle_t *pamh, int flags,int argc, cons
 	int retval;
 
 	const char* pUsername;
-	char* pPassword[15];
+	const char pPassword[15];
 	retval = pam_get_user(pamh, &pUsername, "Username: ");
 
 	printf("Welcome %s\n", pUsername);
