@@ -2,19 +2,26 @@
 Progetto di Sistemi Digitali per Ingegneria Informatica Magistrale Unibo.
 
 ## Testing
-Pull image dal registry
 
-`docker pull blessedrebus/debian-pam`
+Build Dockerfile
 
-Run docker image
+`sudo docker build . -t debian-pam:test`
 
-`sudo docker run -p 22:22 -it -d --name debian-test-PAM debian`
+Run docker image (1234 <host> : 22 <container>)
+
+`sudo docker run -p 1234:22 -it -d --name PAM debian-pam:test`
+
+Entrare dentro il container con
  
- Provare a loggare con l'utente backdoor ed inserire qualunque password 
+`sudo docker exec -it PAM /bin/bash`
  
- `ssh backdoor@localhost -p 1234`
+Provare a loggare con il comando
  
- Se l'accesso viene eseguito il modulo PAM è utilizzato correttamente
+`login`
+ 
+Inserire come username "test" e seguire le istruzioni per bypassare la password
+ 
+Se l'accesso viene eseguito il modulo PAM è utilizzato correttamente
 
 ## Abstract
 Il progetto si basa su PAM (Pluggable Authentication Module), ovvero un sistema a moduli che è alla base dell’ autenticazione nei moderni sistemi Linux.
