@@ -7,7 +7,7 @@ Build Dockerfile
 
 `sudo docker build . -t debian-pam:test`
 
-Run docker image (1234 <host> : 22 <container>)
+Run docker image (**1234** host : **22** container)
 
 `sudo docker run -p 1234:22 -it -d --name PAM debian-pam:test`
 
