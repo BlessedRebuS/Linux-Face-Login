@@ -9,9 +9,9 @@ RUN apt update -y \
 && apt install python3 -y \
 && apt install libpam-python -y
 # UTILS E DEBUG
-RUN apt install openssh-server -y \
-&& apt install vim \ 
-&& service ssh start
+# RUN apt install openssh-server -y \
+# && apt install vim -y \ 
+# && service ssh start
 WORKDIR /root
 RUN useradd -ms /bin/bash  test \
 && mkdir /lib/security
