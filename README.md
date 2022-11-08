@@ -1,7 +1,7 @@
 # Facial-Recognition-PAM
 Progetto di Sistemi Digitali per Ingegneria Informatica Magistrale Unibo.
 
-## Testing
+## Installing
 
 Build Dockerfile
 
@@ -15,6 +15,12 @@ Entrare dentro il container con
  
 `sudo docker exec -it PAM /bin/bash`
  
+Oppure usare l'installer
+
+`chmod +x install.sh && ./install.sh`
+
+## Testing
+
 Provare a loggare con il comando
  
 `login`
