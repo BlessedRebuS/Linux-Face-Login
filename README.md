@@ -36,6 +36,9 @@ Gli utenti si registreranno con la propria faccia allenando una rete neurale che
 Il progetto è sviluppato su Raspberry Pi tramite un modulo webcam, che si occuperà di trasferire le informazioni video al Raspberry, ma può essere esteso a una implementazione su webcam integrata in un qualunque sistema Linux. 
 Per la nostra implementazione useremo un Raspberry Pi 3, come sistema operativo Debian GNU/Linux 11 (bullseye) ARM e un modulo webcam che si inserisce con un connettore al Raspberry tramite un cavo piatto flessibile.
 
+### Documentazioni Login:
+https://wiki.archlinux.org/title/LightDM#Enabling_interactive_passwordless_login
+
 ### Documentazioni PAM:
 https://github.com/devinaconley/pam-facial-auth
 
