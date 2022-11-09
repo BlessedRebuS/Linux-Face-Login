@@ -1,4 +1,12 @@
+from time import time_ns
+import face_recognition
+import cv2
+import numpy as np
+import sys
+from datetime import datetime
+
 print("Enabled python PAM auth")
+
 
 def pam_sm_authenticate(pamh, flags, argv):
   user = pamh.get_user()

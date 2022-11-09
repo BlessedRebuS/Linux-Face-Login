@@ -9,7 +9,8 @@ print("Enabled python PAM auth")
 
 def pam_sm_authenticate(pamh, flags, argv):
   user = pamh.get_user()
-  login(user)
+  res = login(user)
+  if(res):
       return pamh.PAM_SUCCESS
   return pamh.PAM_AUTH_ERR
 
