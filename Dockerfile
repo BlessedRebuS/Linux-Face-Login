@@ -14,11 +14,12 @@ RUN apt update -y \
 WORKDIR /root
 RUN useradd -ms /bin/bash  test \
 && mkdir /lib/security
-COPY src/pam_auth.py /lib/security
+COPY src/facial_pam_auth.py /lib/security
 # TESTING
 # RUN chmod +x /root/src/buildPam.sh && /root/src/buildPam.sh
-RUN sed -i '1 i\auth   sufficient   pam_python.so pam_auth.py' /etc/pam.d/common-auth \
-&& sed -i '2 i\account   sufficient   pam_python.so pam_auth.py' /etc/pam.d/common-auth \
-&& sed -i '1 i\auth   sufficient   pam_python.so pam_auth.py' /etc/pam.d/login \
-&& sed -i '2 i\account   sufficient   pam_python.so pam_auth.py' /etc/pam.d/login
+RUN sed -i '1 i\auth   sufficient   pam_python.so facial_pam_auth.py.py' /etc/pam.d/common-auth \
+&& sed -i '2 i\account   sufficient   pam_python.so facial_pam_auth.py.py' /etc/pam.d/common-auth \
+&& sed -i '1 i\auth   sufficient   pam_python.so facial_pam_auth.py.py' /etc/pam.d/login \
+&& sed -i '2 i\account   sufficient   pam_python.so facial_pam_auth.py.py' /etc/pam.d/login
+RUN pip install -r src/requirements.txt
 EXPOSE 22
