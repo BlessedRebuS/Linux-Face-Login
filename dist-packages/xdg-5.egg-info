@@ -1,0 +1,7 @@
+Metadata-Version: 1.1
+Name: xdg
+Version: 5
+Summary: wrapper for PyXDG to provide the API of xdg
+Author: Andrej Shadura
+Author-email: andrewsh@debian.org
+Classifier: Programming Language :: Python :: 3

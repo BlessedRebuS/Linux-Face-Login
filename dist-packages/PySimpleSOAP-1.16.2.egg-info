@@ -1,0 +1,19 @@
+Metadata-Version: 1.1
+Name: PySimpleSOAP
+Version: 1.16.2
+Summary: Python simple and lightweight SOAP Library
+Home-page: https://github.com/pysimplesoap/pysimplesoap
+Author: Mariano Reingart
+Author-email: reingart@gmail.com
+License: LGPL 3.0
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Internet :: WWW/HTTP :: WSGI :: Application
+Classifier: Topic :: Communications
+Classifier: Topic :: Software Development :: Libraries :: Python Modules

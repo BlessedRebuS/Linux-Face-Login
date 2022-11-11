@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: Brlapi
+Version: 0.8.4
+Summary: BrlAPI Client Bindings for Python
+Home-page: https://brltty.app/
+Author: Alexis Robert
+Author-email: alexissoft@free.fr
+Maintainer: The BRLTTY Developers
+Maintainer-email: BRLTTY@brltty.app
+License: LGPL 2.1
+Platform: UNKNOWN
+
+UNKNOWN
+

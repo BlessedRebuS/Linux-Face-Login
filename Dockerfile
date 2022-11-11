@@ -8,8 +8,12 @@ RUN apt update -y \
 && apt install python3 -y \
 && apt install python3-pip -y \
 && apt install libpam-python -y \
-&& apt install cmake -y
-# UTILS E DEBUG
+&& apt install cmake -y \
+&& apt install libpng-dev -y \
+&& apt install libgl1 -y \
+&& apt install libglib2.0-0 -y \
+&& apt install libimage-png-libpng-perl -y
+ # UTILS E DEBUG
 # RUN apt install openssh-server -y \
 # && apt install vim -y \ 
 # && service ssh start
@@ -26,3 +30,5 @@ RUN sed -i '1 i\auth   sufficient   pam_python.so facial_pam_auth.py' /etc/pam.d
 RUN cp src/facial_pam_auth.py /lib/security
 RUN pip install -r src/requirements.txt
 EXPOSE 22
+
+# REINSTALLARE DLIB DA DENTRO DOCKER
