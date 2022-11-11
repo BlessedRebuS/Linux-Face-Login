@@ -1,3 +1,0 @@
-[console_scripts]
-debianbts = debianbts.__main__:main
-
