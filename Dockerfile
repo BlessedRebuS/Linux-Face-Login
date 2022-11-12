@@ -1,6 +1,6 @@
 ### Per testare la funzionalità di PAM usare <login> ed inserire l'utente test
 
-FROM debian:latest
+FROM debian:bookworm
 # ESSENTIALS
 RUN apt update -y \
 && apt install libpam0g-dev -y \
@@ -12,14 +12,18 @@ RUN apt update -y \
 && apt install libpng-dev -y \
 && apt install libgl1 -y \
 && apt install libglib2.0-0 -y \
-&& apt install libimage-png-libpng-perl -y
- # UTILS E DEBUG
+&& apt install libimage-png-libpng-perl -y \
+&& apt install xvfb -y
+# SIMULARE DISPLAY
+ENV DISPLAY :99
+RUN Xvfb :99 -screen 0 1000x1000x16 &
+# UTILS E DEBUG
 # RUN apt install openssh-server -y \
 # && apt install vim -y \ 
 # && service ssh start
+# COPIA CODICE E AGGIUNTA UTENTE
 WORKDIR /root
-RUN useradd -ms /bin/bash  test \
-&& mkdir /lib/security
+RUN useradd -ms /bin/bash test
 COPY src src
 # TESTING
 # RUN chmod +x /root/src/buildPam.sh && /root/src/buildPam.sh
