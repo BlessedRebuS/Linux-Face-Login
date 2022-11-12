@@ -46,6 +46,8 @@ https://stackoverflow.com/questions/44852484/access-webcam-using-opencv-python-i
 Fake display
 https://askubuntu.com/questions/453109/add-fake-display-when-no-monitor-is-plugged-in
 
+https://sick.codes/xfce-inside-docker-virtual-display-screen-inside-your-headless-container/
+
 
 ### Documentazioni PAM:
 https://github.com/devinaconley/pam-facial-auth
