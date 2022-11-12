@@ -9,7 +9,7 @@ Build Dockerfile
 
 Run docker image (**1234** host : **22** container)
 
-`sudo docker run -p 1234:22 -it -d --name PAM debian-pam:test`
+`sudo docker run --device=/dev/video0:/dev/video0 -p 1234:22 -it -d --name PAM debian-pam:test`
 
 Entrare dentro il container con
  
