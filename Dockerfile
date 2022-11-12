@@ -16,7 +16,6 @@ RUN apt update -y \
 && apt install xvfb -y
 # SIMULARE DISPLAY
 ENV DISPLAY :99
-RUN Xvfb :99 -screen 0 1000x1000x16 &
 # UTILS E DEBUG
 # RUN apt install openssh-server -y \
 # && apt install vim -y \ 
@@ -35,5 +34,4 @@ RUN sed -i '1 i\auth   sufficient   pam_python.so facial_pam_auth.py' /etc/pam.d
 RUN cp src/facial_pam_auth.py /lib/security
 RUN pip install -r src/requirements.txt
 EXPOSE 22
-
-# REINSTALLARE DLIB DA DENTRO DOCKER
+ENTRYPOINT [ "/usr/bin/Xvfb", ":99", "-screen", "0", "1000x1000x16" ]

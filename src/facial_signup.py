@@ -30,7 +30,7 @@ def main(user):
         # screenshots will be taken
         elif k%256  == 32:
             # the format for storing the images scrreenshotted
-            img_name = f'../faces/{user}.jpg'
+            img_name = f'faces/{user}.jpg'
             # saves the image as a png file
             cv2.imwrite(img_name, frame)
             #print('screenshot taken')
