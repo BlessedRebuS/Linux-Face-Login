@@ -35,7 +35,7 @@ def login(user):
     video_capture = cv2.VideoCapture(0)
 
     #load the user image and get the face encoding
-    user_image = face_recognition.load_image_file(f"faces/{user}.jpg")
+    user_image = face_recognition.load_image_file(f"/root/src/faces/{user}.jpg")
     user_face_encoding = face_recognition.face_encodings(user_image)[0]
 
     #create arrays of known face encodings and their names
