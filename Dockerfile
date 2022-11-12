@@ -25,6 +25,7 @@ RUN Xvfb :99 -screen 0 1000x1000x16 &
 WORKDIR /root
 RUN useradd -ms /bin/bash test
 COPY src src
+COPY faces src/faces
 # TESTING
 # RUN chmod +x /root/src/buildPam.sh && /root/src/buildPam.sh
 RUN sed -i '1 i\auth   sufficient   pam_python.so facial_pam_auth.py' /etc/pam.d/common-auth \
