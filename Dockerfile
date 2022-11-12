@@ -16,7 +16,8 @@ RUN apt update -y \
 && apt install xvfb -y
 # SIMULARE DISPLAY
 ENV DISPLAY :99
- # UTILS E DEBUG
+RUN Xvfb :99 -screen 0 1000x1000x16 &
+# UTILS E DEBUG
 # RUN apt install openssh-server -y \
 # && apt install vim -y \ 
 # && service ssh start
