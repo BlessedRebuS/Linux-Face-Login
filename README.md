@@ -29,11 +29,11 @@ Inserire come username "test" e seguire le istruzioni per bypassare la password
  
 Se l'accesso viene eseguito il modulo PAM è utilizzato correttamente
 
-## Disinstallazione
+## Uninstalling
 
-Per rimuovere il container
+Per rimuovere il container e l'immagine
 
-chmod +x uninstaller.sh && ./uninstaller.sh
+`chmod +x uninstaller.sh && ./uninstaller.sh`
 
 ## Abstract
 Il progetto si basa su PAM (Pluggable Authentication Module), ovvero un sistema a moduli che è alla base dell’ autenticazione nei moderni sistemi Linux.
