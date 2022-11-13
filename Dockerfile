@@ -23,8 +23,9 @@ ENV DISPLAY :99
 # COPIA CODICE E AGGIUNTA UTENTE
 WORKDIR /root
 RUN useradd -ms /bin/bash test
+RUN useradd -ms /bin/bash obama
 COPY src src
-COPY faces src/faces
+COPY faces faces
 # TESTING
 # RUN chmod +x /root/src/buildPam.sh && /root/src/buildPam.sh
 RUN sed -i '1 i\auth   sufficient   pam_python.so facial_pam_auth.py' /etc/pam.d/common-auth \
