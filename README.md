@@ -5,7 +5,7 @@ Progetto di Sistemi Digitali per Ingegneria Informatica Magistrale Unibo.
 
 Per riuscire ad esegurie una demo del progetto è necessario disporre di una webcam USB, [installare docker](https://docs.docker.com/get-docker/) e avere i permessi di root sul proprio sistema.
 
-## Installazione immagine pre-buildata
+## Installazione immagine pre-buildata dal [registry](https://hub.docker.com/u/blessedrebus)
 
 Per scaricare l'immagine già fatta (x86_64 bit)
 
