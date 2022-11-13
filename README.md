@@ -1,7 +1,21 @@
 # Facial-Recognition-PAM
 Progetto di Sistemi Digitali per Ingegneria Informatica Magistrale Unibo.
 
-## Installing
+## Installazione immagine pre-buildata
+
+Per scaricare l'immagine già fatta 
+
+`docker pull blessedrebus/debian-pam:v1`
+
+Ed avviare il container con 
+
+`sudo docker run --privileged -p 1234:22 -it -d --name PAM debian-pam:test`
+
+## Installazione automatica
+
+`chmod +x install.sh && ./install.sh`
+
+## Installazione manuale
 
 Build Dockerfile
 
@@ -9,25 +23,17 @@ Build Dockerfile
 
 Run docker image (**1234** host : **22** container)
 
-`sudo docker run --device=/dev/video0:/dev/video0 -p 1234:22 -it -d --name PAM debian-pam:test`
+`sudo docker run --privileged -p 1234:22 -it -d --name PAM debian-pam:test`
 
 Entrare dentro il container con
  
 `sudo docker exec -it PAM /bin/bash`
  
-Oppure usare l'installer
-
-`chmod +x install.sh && ./install.sh`
-
 ## Testing
 
-Provare a loggare con il comando
- 
-`login`
- 
-Inserire come username "test" e seguire le istruzioni per bypassare la password
- 
-Se l'accesso viene eseguito il modulo PAM è utilizzato correttamente
+1) Entrare da dentro il container nella cartella /root/src
+2) Registrare il volto per l'utente "test" con il comando `facial_signup_novideo.py test`. Posizionarsi davanti alla webcam e una volta stabili, premere la barra spaziatrice per salvare la foto.
+3) Usare il comando `login` ed inserire come username "test". Se tutto è configurato correttamente il login avverrà tramite sblocco facciale. Se si proverà a loggare con l'utente "obama" si verrà rifiutati perché la faccia non corrisponde.
 
 ## Uninstalling
 
@@ -42,6 +48,8 @@ Gli utenti si registreranno con la propria faccia allenando una rete neurale che
 Il progetto è sviluppato su Raspberry Pi tramite un modulo webcam, che si occuperà di trasferire le informazioni video al Raspberry, ma può essere esteso a una implementazione su webcam integrata in un qualunque sistema Linux. 
 Per la nostra implementazione useremo un Raspberry Pi 3, come sistema operativo Debian GNU/Linux 11 (bullseye) ARM e un modulo webcam che si inserisce con un connettore al Raspberry tramite un cavo piatto flessibile.
 
+---
+
 ### Documentazioni:
 No password login
 https://wiki.archlinux.org/title/LightDM#Enabling_interactive_passwordless_login
@@ -50,10 +58,15 @@ Webcam passtrough
 https://stackoverflow.com/questions/44852484/access-webcam-using-opencv-python-in-docker
 
 Fake display
-https://askubuntu.com/questions/453109/add-fake-display-when-no-monitor-is-plugged-in
+1) https://askubuntu.com/questions/453109/add-fake-display-when-no-monitor-is-plugged-in
 
-https://sick.codes/xfce-inside-docker-virtual-display-screen-inside-your-headless-container/
+2) https://sick.codes/xfce-inside-docker-virtual-display-screen-inside-your-headless-container/
 
+Raspberry Pinout
+https://www.raspberrypi.com/documentation/computers/raspberry-pi.html
+
+I2C Screen
+https://www.raspberrypi-spy.co.uk/2018/04/i2c-oled-display-module-with-raspberry-pi/
 
 ### Documentazioni PAM:
 https://github.com/devinaconley/pam-facial-auth
