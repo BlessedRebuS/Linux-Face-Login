@@ -31,7 +31,7 @@ def main(user):
             break
         elif (key == 32):
             shot = True
-            img_name = f'faces/{user}.jpg'
+            img_name = f'../faces/{user}.jpg'
             cv2.imwrite(img_name, frame)
             break       
         
