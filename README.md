@@ -3,13 +3,13 @@ Progetto di Sistemi Digitali per Ingegneria Informatica Magistrale Unibo.
 
 ## Installazione immagine pre-buildata
 
-Per scaricare l'immagine già fatta 
+Per scaricare l'immagine già fatta (x86_64 bit)
 
 `docker pull blessedrebus/debian-pam:v1`
 
 Ed avviare il container con 
 
-`sudo docker run --privileged -p 1234:22 -it -d --name PAM debian-pam:test`
+`sudo docker run --privileged -p 1234:22 -it -d --name PAM blessedrebus/debian-pam:v1`
 
 ## Installazione automatica
 
