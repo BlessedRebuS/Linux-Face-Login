@@ -36,7 +36,7 @@ Entrare dentro il container con
 ## Testing
 
 1) Entrare da dentro il container nella cartella /root/src
-2) Registrare il volto per l'utente "test" con il comando `facial_signup_novideo.py test`. Posizionarsi davanti alla webcam e una volta stabili, premere la barra spaziatrice per salvare la foto.
+2) Registrare il volto per l'utente "test" con il comando `python3 facial_signup_novideo.py test`. Posizionarsi davanti alla webcam e una volta stabili, premere la barra spaziatrice per salvare la foto.
 3) Usare il comando `login` ed inserire come username "test". Se tutto è configurato correttamente il login avverrà tramite sblocco facciale. Se si proverà a loggare con l'utente "obama" si verrà rifiutati perché la faccia non corrisponde.
 
 ## Uninstalling
