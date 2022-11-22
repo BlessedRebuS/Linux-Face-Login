@@ -18,7 +18,6 @@ RUN apt update -y \
 && apt install libgl1 -y \
 && apt install libglib2.0-0 -y \
 && apt install libimage-png-libpng-perl -y
-
 # UTILS E DEBUG
 # RUN apt install openssh-server -y \
 # && apt install vim -y \ 
