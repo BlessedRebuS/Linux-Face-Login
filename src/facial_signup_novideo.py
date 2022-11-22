@@ -10,12 +10,7 @@ def main(user):
     w = curses.newwin(2,2)
     w.nodelay(1)
     shot = False
-
-    # intialize the webcam and pass a constant which is 0
     cam = cv2.VideoCapture(0)
-
-    # title of the app
-   # cv2.namedWindow('python webcam screenshot app')
 
     # while loop
     while True:
