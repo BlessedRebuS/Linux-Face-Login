@@ -19,8 +19,6 @@ RUN apt update -y \
 && apt install libglib2.0-0 -y \
 && apt install libimage-png-libpng-perl -y
 
-ENV SUDO_USER root
-
 # UTILS E DEBUG
 # RUN apt install openssh-server -y \
 # && apt install vim -y \ 
@@ -39,4 +37,4 @@ RUN sed -i -e '$auser ALL=(root) NOPASSWD: /root/src/facial_signup_button.py' /e
 # RUN chmod +x /root/src/buildPam.sh && /root/src/buildPam.sh
 RUN pip install -r src/requirements.txt
 EXPOSE 22
-ENTRYPOINT [ "python3", "/root/src/facial_signup_button.py", "root"]
+ENTRYPOINT [ "tail", "-f", "/dev/null"]
