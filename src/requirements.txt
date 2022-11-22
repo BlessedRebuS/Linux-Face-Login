@@ -6,3 +6,4 @@ face-recognition-models==0.3.0
 numpy==1.23.4
 opencv-python==4.6.0.66
 Pillow==9.3.0
+RPi.GPIO==0.7.1
