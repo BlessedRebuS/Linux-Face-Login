@@ -22,15 +22,11 @@ RUN apt update -y \
 WORKDIR /root
 RUN useradd -ms /bin/bash test
 RUN useradd -ms /bin/bash obama
+RUN usermod -aG sudo test
 COPY src src
 COPY faces faces
 # TESTING
 # RUN chmod +x /root/src/buildPam.sh && /root/src/buildPam.sh
-RUN sed -i '1 i\auth   sufficient   pam_python.so facial_pam_auth.py' /etc/pam.d/common-auth \
-&& sed -i '2 i\account   sufficient   pam_python.so facial_pam_auth.py' /etc/pam.d/common-auth \
-&& sed -i '1 i\auth   sufficient   pam_python.so facial_pam_auth.py' /etc/pam.d/login \
-&& sed -i '2 i\account   sufficient   pam_python.so facial_pam_auth.py' /etc/pam.d/login
-RUN cp src/facial_pam_auth.py /lib/security
 RUN pip install -r src/requirements.txt
 EXPOSE 22
 ENTRYPOINT [ "python3", "/root/src/facial_signup_button.py", "root"]
