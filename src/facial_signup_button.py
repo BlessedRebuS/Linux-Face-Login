@@ -2,15 +2,17 @@ import RPi.GPIO as GPIO # Import Raspberry Pi GPIO library
 import time
 import cv2
 import sys
-<<<<<<< HEAD
 import os
-=======
-import os 
->>>>>>> 71a7a1e852ca4da42cadfe3ebdc00b1e92fc23c8
 
 def button_callback(channel):
 
-    user = os.environ['SUDO_USER']
+    #user = os.environ['LOGNAME']
+    f = open('/tmp/keys.txt', 'w')
+    for name, value in os.environ.items():
+        f.write("{0}: {1}".format(name, value)+"\n")
+    f.close()
+    cam = cv2.VideoCapture(0)
+    user = "root"
     # intialize the webcam and pass a constant which is 0
     cam = cv2.VideoCapture(0)
 
@@ -25,14 +27,11 @@ def button_callback(channel):
         #if not ret:
         #    print('failed to grab frame')
         #    break
+        #path globale sennò docker si rompe
         img_name = f'/root/faces/{user}.jpg'
         cv2.imwrite(img_name, frame)
         time.sleep(1)
-<<<<<<< HEAD
         break
-=======
-        break       
->>>>>>> 71a7a1e852ca4da42cadfe3ebdc00b1e92fc23c8
 
     # release the camera
     cam.release()
