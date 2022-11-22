@@ -2,7 +2,11 @@ import RPi.GPIO as GPIO # Import Raspberry Pi GPIO library
 import time
 import cv2
 import sys
+<<<<<<< HEAD
 import os
+=======
+import os 
+>>>>>>> 71a7a1e852ca4da42cadfe3ebdc00b1e92fc23c8
 
 def button_callback(channel):
 
@@ -24,7 +28,11 @@ def button_callback(channel):
         img_name = f'/root/faces/{user}.jpg'
         cv2.imwrite(img_name, frame)
         time.sleep(1)
+<<<<<<< HEAD
         break
+=======
+        break       
+>>>>>>> 71a7a1e852ca4da42cadfe3ebdc00b1e92fc23c8
 
     # release the camera
     cam.release()
