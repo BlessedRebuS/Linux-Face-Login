@@ -16,7 +16,7 @@ DC = 23
 SPI_PORT = 0
 SPI_DEVICE = 0
 
-def draw():
+def draw_message():
     draw.rectangle((0,0,width,height), outline=0, fill=0)
     # Write two lines of text.
     name = "Ciao TEST!"
@@ -56,5 +56,5 @@ x = 0
 
 # Load default font.
 font = ImageFont.load_default()
-draw()
+draw_message()
 
