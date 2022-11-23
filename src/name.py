@@ -26,7 +26,7 @@ def draw():
     disp.image(image)
     disp.display()
     time.sleep(.1)
-    
+
 # 128x32 display with hardware I2C:
 disp = Adafruit_SSD1306.SSD1306_128_32(rst=RST)
 
@@ -56,4 +56,5 @@ x = 0
 
 # Load default font.
 font = ImageFont.load_default()
+draw()
 
