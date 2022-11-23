@@ -31,6 +31,5 @@ COPY faces faces
 # TESTING
 # RUN chmod +x /root/src/buildPam.sh && /root/src/buildPam.sh
 RUN pip install -r src/requirements.txt
-RUN sudo pip install Adafruit-SSD1306
 EXPOSE 22
 ENTRYPOINT [ "python3", "/root/src/stats.py"]
