@@ -13,7 +13,7 @@ import subprocess
 
 done = False
 
-def draw(user):
+def draw_message(user):
 
     draw.rectangle((0,0,width,height), outline=0, fill=0)
     # Write two lines of text.
@@ -34,14 +34,10 @@ def button_callback(channel):
     while True:
         # intializing the frame, ret
         ret, frame = cam.read()
-        # if statement
-        #if not ret:
-        #    print('failed to grab frame')
-        #    break
         #path globale sennò docker si rompe
         img_name = f'/root/faces/{user}.jpg'
         cv2.imwrite(img_name, frame)
-        draw(user)
+        draw_message(user)
         time.sleep(1)
         global done
         done = True
