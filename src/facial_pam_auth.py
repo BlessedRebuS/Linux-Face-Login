@@ -4,6 +4,9 @@ import cv2
 import numpy as np
 import sys
 from datetime import datetime
+import RPi.GPIO as GPIO
+import time
+import os
 
 print("Starting face authentication...")
 
@@ -11,8 +14,9 @@ def pam_sm_authenticate(pamh, flags, argv):
   user = pamh.get_user()
   res = login(user)
   if(res):
-      return pamh.PAM_SUCCESS
-  return pamh.PAM_AUTH_ERR
+        return pamh.PAM_SUCCESS
+  else:
+        return pamh.PAM_AUTH_ERR
 
 def pam_sm_setcred(pamh, flags, argv):
   return pamh.PAM_SUCCESS
@@ -57,7 +61,7 @@ def login(user):
 
     while (not found and (time-start_time).total_seconds() < max_time):
 
-        
+
 
         # Grab a single frame of video
         ret, frame = video_capture.read()
@@ -69,7 +73,7 @@ def login(user):
 
             # Convert the image from BGR color (which OpenCV uses) to RGB color (which face_recognition uses)
             rgb_small_frame = small_frame[:, :, ::-1]
-            
+
             # Find all the faces and face encodings in the current frame of video
             face_locations = face_recognition.face_locations(rgb_small_frame)
             face_encodings = face_recognition.face_encodings(rgb_small_frame, face_locations)
@@ -86,21 +90,22 @@ def login(user):
                     break
 
         process_this_frame = not process_this_frame
-        
+
         time = datetime.now()
         #print("time: " + str(time))
 
     if (found):
         print("AUTENTICATO")
+        os.system("python3 /root/src/green.py")
         return True
     else:
         print("NON AUTENTICATO")
+        os.system("python3 /root/src/red.py")
         return False
 
     # Release handle to the webcam
     video_capture.release()
     cv2.destroyAllWindows()
-
     if (found):
         return True
     else:
