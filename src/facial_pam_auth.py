@@ -5,7 +5,7 @@ import numpy as np
 import sys
 from datetime import datetime
 
-print("Enabled python PAM auth")
+print("Starting face authentication...")
 
 def pam_sm_authenticate(pamh, flags, argv):
   user = pamh.get_user()
