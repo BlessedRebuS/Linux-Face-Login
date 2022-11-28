@@ -17,7 +17,7 @@ def draw_message(user):
 
     draw.rectangle((0,0,width,height), outline=0, fill=0)
     # Write two lines of text.
-    name = f"Registrato utente: {user}"
+    name = f"Registrato utente:\n{user}"
     draw.text((x, top+8),name, font=font, fill=255)
 
     # Display image.
@@ -87,6 +87,7 @@ GPIO.setwarnings(False) # Ignore warning for now
 GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) # Set pin 10 to be an input pin and set initial value to be pulled low (off)
 GPIO.add_event_detect(10,GPIO.RISING,callback=button_callback) # Setup event on pin 10 rising edge
 #ciclo infinito per aspettare le callback, da modificare ENTRYPOINT
+print("Press the button to register a new user")
 while done is False:
     time.sleep(1)
 #message = input("Press enter to quit\n\n") # Run until someone presses enter
