@@ -26,22 +26,22 @@ def draw_message(user):
     time.sleep(.1)
 
 def button_callback(channel):
-
-    cam = cv2.VideoCapture(0)
-    user = sys.argv[1]
-    print(user)
-    # while loop
-    while True:
-        # intializing the frame, ret
-        ret, frame = cam.read()
-        #path globale sennò docker si rompe
-        img_name = f'/root/faces/{user}.jpg'
-        cv2.imwrite(img_name, frame)
-        draw_message(user)
-        time.sleep(1)
-        global done
-        done = True
-        break
+    global done
+    if not done:
+        cam = cv2.VideoCapture(0)
+        user = sys.argv[1]
+        print(user)
+        # while loop
+        while True:
+            # intializing the frame, ret
+            ret, frame = cam.read()
+            #path globale sennò docker si rompe
+            img_name = f'/root/faces/{user}.jpg'
+            cv2.imwrite(img_name, frame)
+            draw_message(user)
+            time.sleep(1)
+            done = True
+            break
 
     # release the camera
     cam.release()

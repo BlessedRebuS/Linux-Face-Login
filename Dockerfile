@@ -12,7 +12,7 @@ RUN apt update -y \
 && apt install libimage-png-libpng-perl -y \
 && apt install python3 -y \
 && apt install python3-pip -y \
-&& apt install cmake -y \
+&& apt install cmake -y
 # UTILS E DEBUG
 # RUN apt install openssh-server -y \
 # && apt install vim -y \ 
