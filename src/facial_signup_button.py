@@ -1,96 +1,111 @@
-import RPi.GPIO as GPIO # Import Raspberry Pi GPIO library
-import time
+from time import time_ns
+import face_recognition
 import cv2
+import numpy as np
 import sys
-import os
+from datetime import datetime
+import RPi.GPIO as GPIO
 import time
-import Adafruit_GPIO.SPI as SPI
-import Adafruit_SSD1306
-from PIL import Image
-from PIL import ImageDraw
-from PIL import ImageFont
-import subprocess
+import os
+print("Starting face authentication...")
 
-done = False
+def pam_sm_authenticate(pamh, flags, argv):
+  user = pamh.get_user()
+  res = login(user)
+  if(res):
+        return pamh.PAM_SUCCESS
+  else:
+        return pamh.PAM_AUTH_ERR
 
-def draw_message(user):
+def pam_sm_setcred(pamh, flags, argv):
+  return pamh.PAM_SUCCESS
 
-    draw.rectangle((0,0,width,height), outline=0, fill=0)
-    # Write two lines of text.
-    name = f"Registrato utente:\n{user}"
-    draw.text((x, top+8),name, font=font, fill=255)
+def pam_sm_acct_mgmt(pamh, flags, argv):
+  return pamh.PAM_SUCCESS
 
-    # Display image.
-    disp.image(image)
-    disp.display()
-    time.sleep(.1)
+def pam_sm_open_session(pamh, flags, argv):
+  return pamh.PAM_SUCCESS
 
-def button_callback(channel):
-    global done
-    if not done:
-        cam = cv2.VideoCapture(0)
-        user = sys.argv[1]
-        print(user)
-        # while loop
-        while True:
-            # intializing the frame, ret
-            ret, frame = cam.read()
-            #path globale sennò docker si rompe
-            img_name = f'/root/faces/{user}.jpg'
-            cv2.imwrite(img_name, frame)
-            draw_message(user)
-            time.sleep(1)
-            done = True
-            break
+def pam_sm_close_session(pamh, flags, argv):
+  return pamh.PAM_SUCCESS
 
-    # release the camera
-    cam.release()
+def pam_sm_chauthtok(pamh, flags, argv):
+  return pamh.PAM_SUCCESS
 
+def login(user):
 
-# Raspberry Pi pin configuration:
-RST = None     # on the PiOLED this pin isnt used
-# Note the following are only used with SPI:
-DC = 23
-SPI_PORT = 0
-SPI_DEVICE = 0
-    
-# 128x32 display with hardware I2C:
-disp = Adafruit_SSD1306.SSD1306_128_32(rst=RST)
+    #default webcam
+    video_capture = cv2.VideoCapture(0)
 
-disp.begin()
+    #load the user image and get the face encoding
+    user_image = face_recognition.load_image_file(f"/root/faces/{user}.jpg")
+    user_face_encoding = face_recognition.face_encodings(user_image)[0]
 
-# Clear display.
-disp.clear()
-disp.display()
+    #create arrays of known face encodings and their names
+    known_face_encodings = [
+        user_face_encoding
+    ]
+    known_face_names = [
+        user
+    ]
 
-width = disp.width
-height = disp.height
-image = Image.new('1', (width, height))
+    face_locations = []
+    face_encodings = []
+    face_names = []
+    process_this_frame = True
+    found = False
+    time = datetime.now()
+    max_time = 10 #seconds
+    start_time = datetime.now()
 
-# Get drawing object to draw on image.
-draw = ImageDraw.Draw(image)
-
-# Draw a black filled box to clear the image.
-draw.rectangle((0,0,width,height), outline=0, fill=0)
-
-# Draw some shapes.
-# First define some constants to allow easy resizing of shapes.
-padding = -2
-top = padding
-bottom = height-padding
-# Move left to right keeping track of the current x position for drawing shapes.
-x = 0
-
-# Load default font.
-font = ImageFont.load_default()
-GPIO.setwarnings(False) # Ignore warning for now
-GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) # Set pin 10 to be an input pin and set initial value to be pulled low (off)
-GPIO.add_event_detect(10,GPIO.RISING,callback=button_callback) # Setup event on pin 10 rising edge
-#ciclo infinito per aspettare le callback, da modificare ENTRYPOINT
-print("Press the button to register a new user")
-while done is False:
-    time.sleep(1)
-#message = input("Press enter to quit\n\n") # Run until someone presses enter
-GPIO.cleanup() # Clean up
+    while (not found and (time-start_time).total_seconds() < max_time):
 
 
+
+        # Grab a single frame of video
+        ret, frame = video_capture.read()
+
+        # Only process every other frame of video to save time
+        if process_this_frame:
+            # Resize frame of video to 1/4 size for faster face recognition processing
+            small_frame = cv2.resize(frame, (0, 0), fx=0.25, fy=0.25)
+
+            # Convert the image from BGR color (which OpenCV uses) to RGB color (which face_recognition uses)
+            rgb_small_frame = small_frame[:, :, ::-1]
+
+            # Find all the faces and face encodings in the current frame of video
+            face_locations = face_recognition.face_locations(rgb_small_frame)
+            face_encodings = face_recognition.face_encodings(rgb_small_frame, face_locations)
+
+            for face_encoding in face_encodings:
+                # See if the face is a match for the known face(s)
+                matches = face_recognition.compare_faces(known_face_encodings, face_encoding)
+
+                # Or instead, use the known face with the smallest distance to the new face
+                face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
+                best_match_index = np.argmin(face_distances)
+                if matches[best_match_index]:
+                    found = True
+                    break
+
+        process_this_frame = not process_this_frame
+
+        time = datetime.now()
+        #print("time: " + str(time))
+
+    if (found):
+        print("AUTENTICATO")
+        os.system("python3 /root/src/green.py")
+        return True
+    else:
+        print("NON AUTENTICATO")
+        os.system("python3 /root/src/red.py")
+        return False
+
+    # Release handle to the webcam
+    video_capture.release()
+    cv2.destroyAllWindows()
+    if (found):
+        return True
+    else:
+        return False
