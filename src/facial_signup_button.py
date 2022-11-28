@@ -2,7 +2,6 @@ import RPi.GPIO as GPIO # Import Raspberry Pi GPIO library
 import time
 import cv2
 import sys
-import os
 import time
 import Adafruit_GPIO.SPI as SPI
 import Adafruit_SSD1306
