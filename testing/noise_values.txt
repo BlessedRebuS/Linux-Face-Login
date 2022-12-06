@@ -25,3 +25,31 @@ leo leo4:
 	gaussian mean 0 var 0.01: 0.44
 	gaussian mean 0 var 0.005: 0.40
 	gaussian mean 0 var 0.001: 0.32
+	
+leo leo2 rumore applicato all'encoding:
+	no noise: 0.24
+	sp amount 0.3: 1895
+	sp amount 0.1: 1909
+	sp amount 0.05: 1916
+	sp amount 0.01: 1910
+	sp amount 0.005: 1909
+	sp amount 0.001: 1909
+	gaussian mean 0 var 0.03: 1842
+	gaussian mean 0 var 0.02: 1679
+	gaussian mean 0 var 0.01: 1712
+	gaussian mean 0 var 0.005: 1698
+	gaussian mean 0 var 0.001: 1843
+	
+leo leo4 rumore applicato all'encoding:
+	no noise: 0.31
+	sp amount 0.3: 1951
+	sp amount 0.1: 1892
+	sp amount 0.05: 1856
+	sp amount 0.01: 1872
+	sp amount 0.005: 1882
+	sp amount 0.001: 1872
+	gaussian mean 0 var 0.03: 1691
+	gaussian mean 0 var 0.02: 1873
+	gaussian mean 0 var 0.01: 1964
+	gaussian mean 0 var 0.005: 1634
+	gaussian mean 0 var 0.001: 1827
