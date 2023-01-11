@@ -2,9 +2,10 @@
 Progetto di Sistemi Digitali per Ingegneria Informatica Magistrale Unibo.
 La versione qui presentata è la versione per Rasperry Pi 3b.
 
-<img src="presentazione/raspberry/45deg.jpeg" width="300">
+<p>
+<img src="presentazione/raspberry/45deg.jpeg" width="326">
 <img src="presentazione/raspberry/circuit.png" width="300">
-
+</p>
 
 ## Requisiti
 
