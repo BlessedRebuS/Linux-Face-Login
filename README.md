@@ -1,6 +1,6 @@
 # Facial-Recognition-PAM
 Progetto di Sistemi Digitali per Ingegneria Informatica Magistrale Unibo.
-
+Il progetto sviluppato per Raspberry si trova [qui](https://github.com/FlippaFloppa/Linux-Face-Login/tree/raspberry).
 ## Requisiti
 
 Per riuscire ad esegurie una demo del progetto è necessario disporre di una webcam USB, [installare docker](https://docs.docker.com/get-docker/) e avere i permessi di root sul proprio sistema.
