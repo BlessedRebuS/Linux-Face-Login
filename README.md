@@ -1,19 +1,24 @@
 # Facial-Recognition-PAM
 Progetto di Sistemi Digitali per Ingegneria Informatica Magistrale Unibo.
+La versione qui presentata è la versione per Rasperry Pi 3b.
+
+<img src="presentazione/raspberry/45deg.jpeg" width="300">
+<img src="presentazione/raspberry/circuit.png" width="300">
+
 
 ## Requisiti
 
-Per riuscire ad esegurie una demo del progetto è necessario disporre di una webcam USB, [installare docker](https://docs.docker.com/get-docker/) e avere i permessi di root sul proprio sistema.
+Per riuscire ad esegurie una demo del progetto è necessario disporre di un Raspberry (modello 3-4) di una webcam USB o un modulo webcam con cavo flat, [installare docker](https://docs.docker.com/get-docker/) e avere i permessi di root sul proprio sistema.
 
 ## Installazione immagine pre-buildata dal [registry](https://hub.docker.com/u/blessedrebus)
 
-Per scaricare l'immagine già fatta (x86_64 bit)
+Per scaricare l'immagine già fatta (aarch64)
 
-`docker pull blessedrebus/debian-pam:v1`
+`docker pull blessedrebus/debian-pam:armv8`
 
 Ed avviare il container con 
 
-`sudo docker run --privileged -p 1234:22 -it -d --name PAM blessedrebus/debian-pam:v1`
+`sudo docker run --privileged -p 1234:22 -it -d --name PAM blessedrebus/debian-pam:armv8`
 
 ## Installazione automatica
 
